@@ -1,0 +1,17 @@
+#!/bin/bash
+#serverList=(192.168.1.116 192.168.1.11 192.168.1.12)
+figlet Tapioca Ping
+echo "-------------------------------------------------------------------------------------------"
+echo "Please enter a list of IPs / hostnames to ping (ex localhost 127.0.0.1): "
+read -a serverList
+for host in ${serverList[@]}; do
+	echo -e "Pinging $host: " 
+	ping -c 1 $host
+	if [ $? -eq 0 ]; then
+		echo -e "$host ping successful\n
+-------------------------------------------------"
+	else
+		echo -e "$host ping unsuccessful\n 
+-------------------------------------------------"
+	fi
+done
