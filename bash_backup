@@ -1,0 +1,3 @@
+#!/bin/bash
+cp $HOME/.bash_profile $HOME/.scripts/.bash_profile_backup
+cp $HOME/.bashrc $HOME/.scripts/.bashrc_backup

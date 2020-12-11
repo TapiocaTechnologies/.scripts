@@ -1,0 +1,14 @@
+#!/bin/bash
+
+figlet "Tapioca Mem / CPU stats" || echo -e "Tapioca Mem / CPU stats"
+
+echo "Memory Used: "
+free -h | awk '/^Mem:/ {print $3 "/" $2}'
+echo ""
+echo -e "Top 10 Mem usage"
+echo "---------------------------"
+ps axch -o cmd,%mem --sort=-%mem | head
+echo ""
+echo -e "Top 10 CPU usage"
+echo "---------------------------"
+ps axch -o cmd,%cpu --sort=%cpu | head

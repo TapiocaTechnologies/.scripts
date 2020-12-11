@@ -1,6 +1,7 @@
 #!/bin/bash
 #serverList=(192.168.1.116 192.168.1.11 192.168.1.12)
-figlet Tapioca Ping
+
+figlet Tapioca Ping || echo -e "Tapioca Ping"
 echo "-------------------------------------------------------------------------------------------"
 echo "Please enter a list of IPs / hostnames to ping (ex localhost 127.0.0.1): "
 read -a serverList
