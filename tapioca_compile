@@ -1,0 +1,12 @@
+#!/bin/bash
+FILE=$1
+EXTENSION="${FILE##*.}"
+
+case $EXTENSION in
+	py)
+		python3 $FILE ;;
+	java)
+		javac $FILE ;;
+	*)
+		echo "Can not find file format $EXTENSION" ;;
+esac

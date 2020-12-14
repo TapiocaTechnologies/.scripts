@@ -1,3 +1,4 @@
 #!/bin/bash
 cp $HOME/.bash_profile $HOME/.scripts/.bash_profile_backup
 cp $HOME/.bashrc $HOME/.scripts/.bashrc_backup
+cp $HOME/.vimrc $HOME/.scripts/.vimrc_backup
