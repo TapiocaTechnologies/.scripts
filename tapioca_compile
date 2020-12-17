@@ -7,6 +7,8 @@ case $EXTENSION in
 		python3 $FILE ;;
 	java)
 		javac $FILE ;;
+	pl)
+		perl $FILE ;;
 	*)
 		echo "Can not find file format $EXTENSION" ;;
 esac

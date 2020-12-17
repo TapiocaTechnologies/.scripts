@@ -1,0 +1,34 @@
+#!/bin/bash
+APP_NAME="tapioca"
+BINARY="/home/tapioca/mongodb-linux-x86_64-rhel70-4.4.0/bin/mongo"
+USER="mongosys"
+PASS="Irontoe1234"
+S1_IP="192.168.1.11"
+S1_PORT="27001"
+CONF_IP=""
+CONF_PORT=""
+S2_IP=""
+S2_PORT=""
+S3_IP=""
+S3_PORT=""
+S4_IP=""
+S4_PORT=""
+DB="admin" 
+
+echo "Mongos/Config Information"
+echo "------------------------------"
+$BINARY mongodb://$USER:$PASS@$CONF_IP:$CONF_PORT/$DB --eval "printjson(db.adminCommand('listDatabases'), db.printReplicationInfo(), db.printSlaveReplicationInfo())"
+
+echo "Shard 1 Information"
+echo "------------------------------"
+$BINARY mongodb://$USER:$PASS@$S1_IP:$S1_PORT/$DB --eval "printjson(db.adminCommand('listDatabases'), db.printReplicationInfo(), db.printSlaveReplicationInfo())"
+
+echo "Shard 2 Information"
+echo "------------------------------"
+$BINARY mongodb://$USER:$PASS@$S2_IP:$S2_PORT/$DB --eval "printjson(db.adminCommand('listDatabases'), db.printReplicationInfo(), db.printSlaveReplicationInfo())"
+
+echo "Shard 3 Information"
+echo "------------------------------"
+$BINARY mongodb://$USER:$PASS@$S3_IP:$S3_PORT/$DB --eval "printjson(db.adminCommand('listDatabases'), db.printReplicationInfo(), db.printSlaveReplicationInfo())"
+
+

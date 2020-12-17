@@ -1,0 +1,1 @@
+nnoremap <silent> <F5> :w<CR>:!tapioca_compile % <CR>
