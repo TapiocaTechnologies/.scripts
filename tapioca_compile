@@ -9,6 +9,7 @@ case $EXTENSION in
 		javac $FILE ;;
 	pl)
 		perl $FILE ;;
+
 	*)
-		echo "Can not find file format $EXTENSION" ;;
+		./$FILE || echo "Could not run the file" ;;
 esac

@@ -9,8 +9,11 @@ S2_HOSTS=""
 S3_HOSTS=""
 S4_HOSTS=""
 DB="admin" 
+HC="/home/tapioca/health_check.txt"
 
+{
+	echo "Shard 1 Information"
+	echo "------------------------------"
+	$BINARY mongodb://$USER:$PASS@$S1_HOSTS/$DB --eval "db.printReplicationInfo(); printjson(db.adminCommand('listDatabases')); db.printSlaveReplicationInfo(); rs.status()"
 
-echo "Shard 1 Information"
-echo "------------------------------"
-$BINARY mongodb://$USER:$PASS@$S1_HOSTS/$DB --eval "db.printReplicationInfo(); printjson(db.adminCommand('listDatabases')); db.printSlaveReplicationInfo(); rs.status()"
+} 2>&1 | tee $HC
