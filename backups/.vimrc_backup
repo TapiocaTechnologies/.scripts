@@ -1,1 +1,11 @@
-nnoremap <silent> <F5> :w<CR>:!tapioca_compile % <CR>
+nnoremap <silent> <F5> :w <CR>:!~/.scripts/tapioca_compile % <CR>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-B> :ls <CR>
+nnoremap <silent> <C-F> :!~/.scripts/vim_fzf <CR> <CR>
+set splitbelow
+set splitright
+set cmdheight=4
+set background=desert

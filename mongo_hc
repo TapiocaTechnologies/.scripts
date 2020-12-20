@@ -12,6 +12,7 @@ DB="admin"
 HC="/home/tapioca/health_check.txt"
 
 {
+	date
 	echo "Shard 1 Information"
 	echo "------------------------------"
 	$BINARY mongodb://$USER:$PASS@$S1_HOSTS/$DB --eval "db.printReplicationInfo(); printjson(db.adminCommand('listDatabases')); db.printSlaveReplicationInfo(); rs.status()"
