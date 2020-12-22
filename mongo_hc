@@ -10,11 +10,59 @@ S3_HOSTS=""
 S4_HOSTS=""
 DB="admin" 
 HC="/home/tapioca/health_check.txt"
+CHOICE=$1
+get_conf() {
+	echo "Config / Mongos Information"
+#	$BINARY mongodb://$USER:$PASS@$CONF_HOSTS/$DB --eval "db.printReplicationInfo(); printjson(db.adminCommand('listDatabases')); db.printSlaveReplicationInfo(); rs.status()"
 
-{
-	date
+}
+get_s1() {
+	
 	echo "Shard 1 Information"
 	echo "------------------------------"
 	$BINARY mongodb://$USER:$PASS@$S1_HOSTS/$DB --eval "db.printReplicationInfo(); printjson(db.adminCommand('listDatabases')); db.printSlaveReplicationInfo(); rs.status()"
 
+}
+
+get_s2(){
+	echo "Shard 2 Information"
+	echo "------------------------------"
+#	$BINARY mongodb://$USER:$PASS@$S2_HOSTS/$DB --eval "db.printReplicationInfo(); printjson(db.adminCommand('listDatabases')); db.printSlaveReplicationInfo(); rs.status()"
+}
+get_s3(){
+	echo "Shard 3 Information"
+	echo "------------------------------"
+#	$BINARY mongodb://$USER:$PASS@$S3_HOSTS/$DB --eval "db.printReplicationInfo(); printjson(db.adminCommand('listDatabases')); db.printSlaveReplicationInfo(); rs.status()"
+}
+get_s4(){
+	echo "Shard 4 Information"
+	echo "------------------------------"
+#	$BINARY mongodb://$USER:$PASS@$S2_HOSTS/$DB --eval "db.printReplicationInfo(); printjson(db.adminCommand('listDatabases')); db.printSlaveReplicationInfo(); rs.status()"
+}
+
+{
+case $CHOICE in
+	conf)
+		get_conf
+		;;
+	s1)
+		get_s1
+		;;
+	s2)
+		get_s2
+		;;
+	s3)
+		get_s3
+		;;
+	s4)
+		get_s4
+		;;
+	*)
+		get_conf
+		get_s1
+		get_s2
+		get_s3
+		get_s4
+		;;
+esac
 } 2>&1 | tee $HC

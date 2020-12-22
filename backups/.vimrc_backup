@@ -8,4 +8,4 @@ nnoremap <silent> <C-F> :!~/.scripts/vim_fzf <CR> <CR>
 set splitbelow
 set splitright
 set cmdheight=4
-set background=desert
+:color desert
