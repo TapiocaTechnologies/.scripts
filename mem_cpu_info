@@ -2,13 +2,27 @@
 
 figlet "Tapioca Mem / CPU stats" || echo -e "Tapioca Mem / CPU stats"
 
+function top_ten {
 echo "Memory Used: "
-free -h | awk '/^Mem:/ {print $3 "/" $2}'
+free | grep Mem | awk '{print$3/$2 * 100.0}'
 echo ""
 echo -e "Top 10 Mem usage"
-echo "---------------------------"
+echo "--------------------------"
 ps axch -o cmd,%mem --sort=-%mem | head
 echo ""
 echo -e "Top 10 CPU usage"
-echo "---------------------------"
-ps axch -o cmd,%cpu --sort=%cpu | head
+echo "-----------------------------"
+ps axch -o cmd,%cpu --sort=-%cpu | head
+}
+top_ten
+
+PERCENT_USED=$(free | grep Mem | awk '{print $3/$2 * 100.0}')
+ROUNDED=${PERCENT_USED%.*}
+
+if [[ "$ROUNDED" -ge 80 ]]
+then
+  echo "WARNING: Mem usage is above 80% at $PERCENT_USED%"
+else
+  echo "Mem usage is nominal."
+
+fi 
