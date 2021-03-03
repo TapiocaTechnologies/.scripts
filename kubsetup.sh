@@ -33,4 +33,5 @@ swapoff -a
 echo "####################################"
 echo "Initializing Kubernetes"
 kubeadm init && enabled_user
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 kubectl get nodes && echo "kubernetes cluster created" || echo "kubernetes cluster failed to create" 
